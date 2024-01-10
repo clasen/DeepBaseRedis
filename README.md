@@ -6,7 +6,10 @@ For simplicity you may be interested in the version of DeepBase that persists in
 
 ## 📦 Installation
 ```shell
-npm install deepbase
+# DeepBaseRedis requires Redis Stack, which includes the necessary Redis JSON module. Here's how you can set it up:
+docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
+
+npm install deepbase-redis
 ```
 
 ## 🔧 Usage
