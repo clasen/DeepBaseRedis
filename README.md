@@ -60,7 +60,11 @@ await mem.add("user", { name: "anya" });
 const userIds = await mem.keys("user")
 console.log(userIds) // [ 'CqtOILTDUg', 'MXOlTBSmEf' ]
 
-console.log(await mem.get())
+const result = {
+    config: await mem.get('config'),
+    user: await mem.get('user'),
+}
+console.log(result)
 // {
 //     config: { lang: 'EN' },
 //     user: {
