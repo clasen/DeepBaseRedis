@@ -31,8 +31,8 @@ console.log(configLang); // "en"
 ```js
 const path = await mem.add("user", { name: "martin" });
 
-// add() will create a secure key (ie. "iKid4OCK")
-console.log(path) // [ 'user', 'iKid4OCK' ]
+// add() will create a secure key (ie. "CqtOILTDUg")
+console.log(path) // [ 'user', 'CqtOILTDUg' ]
 
 const userName = await mem.get(...path, "name");
 console.log(userName); // "martin"
@@ -58,14 +58,14 @@ const lang = await mem.get("config", "lang"); // EN
 await mem.add("user", { name: "anya" });
 
 const userIds = await mem.keys("user")
-console.log(userIds) // [ 'iKid4OCKds', 'F3wORv_Jsd' ]
+console.log(userIds) // [ 'CqtOILTDUg', 'MXOlTBSmEf' ]
 
 console.log(await mem.get())
 // {
 //     config: { lang: 'EN' },
 //     user: {
-//         iKid4OCKds: { name: 'martin', balance: 580 },
-//         F3wORv_Jsd: { name: 'anya' }
+//         CqtOILTDUg: { name: 'martin', balance: 580 },
+//         MXOlTBSmEf: { name: 'anya' }
 //     }
 // }
 ```
