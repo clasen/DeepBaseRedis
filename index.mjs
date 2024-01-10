@@ -8,10 +8,9 @@ export default class DeepBaseRedis {
         this.nidLength = 10;
         this.name = "db";
         this.url = "redis://localhost:6379";
-        Object.assign(this, opts)
-
-        this.nanoid = customAlphabet(this.nidAlphabet, this.nidLength)
         this.client = createClient({ url: this.url });
+        this.nanoid = customAlphabet(this.nidAlphabet, this.nidLength)
+        Object.assign(this, opts)
     }
 
     async disconnect() {
