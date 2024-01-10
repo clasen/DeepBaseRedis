@@ -1,4 +1,4 @@
-import DeepBase from "../index.mjs";
+import DeepBase from "../index.js";
 
 const mem = new DeepBase({ name: "demo" });
 

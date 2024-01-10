@@ -1,7 +1,7 @@
-import { createClient } from 'redis';
-import { customAlphabet } from 'nanoid'
+const { createClient } = require('redis');
+const { customAlphabet } = require('nanoid');
 
-export default class DeepBaseRedis {
+class DeepBaseRedis {
 
     constructor(opts = {}) {
         this.nidAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -116,3 +116,5 @@ export default class DeepBaseRedis {
         return [...keys, id]
     }
 }
+
+module.exports = DeepBaseRedis;

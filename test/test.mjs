@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import DeepBase from '../index.mjs';
+import DeepBase from '../index.js';
 import assert from 'assert';
 
 describe('DeepBaseRedis', () => {
