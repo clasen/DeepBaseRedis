@@ -1,12 +1,12 @@
 # 🌳 DeepBase Redis
 
-DeepBaseRedis is an innovative and efficient module designed to seamlessly integrate with Redis Stack, providing a robust solution for managing and interacting with databases. With DeepBaseRedis, you can effortlessly perform CRUD operations and manipulate data stored in Redis Stack (json module) collections.
+DeepBaseRedis is an innovative and efficient module designed to seamlessly integrate with Redis Stack, providing a robust solution for managing and interacting with databases. With DeepBaseRedis, you can effortlessly perform CRUD operations and manipulate data stored in Redis Stack (RedisJSON Module) keys.
 
 For simplicity you may be interested in the version of DeepBase that persists in JSON files. https://www.npmjs.com/package/deepbase
 
 ## 📦 Installation
 ```shell
-# DeepBaseRedis requires Redis Stack, which includes the necessary Redis JSON module. Here's how you can set it up:
+# DeepBaseRedis requires Redis Stack, which includes the necessary RedisJSON module.
 docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
 
 npm install deepbase-redis
@@ -76,7 +76,7 @@ console.log(result)
 
 ## 🤯 Features
 - 🔍 Easily access and modify nested objects in JSON storage.
-- 📁 Provides an easy-to-use interface for connecting to Redis JSON and performing data operations, saving development.
+- 📁 Provides an easy-to-use interface for connecting to RedisJSON and performing data operations, saving development.
 - 🌱 Simple and intuitive API for managing complex JSON structures.
 
 ## 🤔 Why DeepBase 
