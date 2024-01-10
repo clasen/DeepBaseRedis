@@ -1,4 +1,4 @@
-import DeepBase from '../index.mjs';
+import DeepBase from "../index.mjs";
 
 const mem = new DeepBase({ name: "demo" });
 
@@ -12,7 +12,7 @@ console.log(configLang); // "en"
 
 // ADD
 const path = await mem.add("user", { name: "martin" });
-console.log(path) // [ 'user', 'iKid4OCKds' ] / iKid4OCKds is a random string
+console.log(path) // [ 'user', 'CqtOILTDUg' ] / CqtOILTDUg is a random string
 
 const userName = await mem.get(...path, "name");
 console.log(userName); // "martin"
@@ -38,6 +38,7 @@ console.log({
     user: await mem.get("user")
 })
 
+await mem.disconnect();
 // {
 //     "config": {
 //         "lang": "EN"

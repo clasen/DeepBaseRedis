@@ -13,6 +13,7 @@ describe('DeepBaseRedis', () => {
 
     afterEach(async () => {
         await db.del('foo');
+        await db.disconnect();
     });
 
     describe('#set()', () => {
@@ -131,6 +132,7 @@ describe('DeepBaseRedis', () => {
             await db.upd('foo', 'bar', n => n * 3);
             assert.deepEqual(await db.get('foo', 'bar'), 6);
         });
-
     });
+
+    
 });

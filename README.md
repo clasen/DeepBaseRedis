@@ -11,7 +11,7 @@ npm install deepbase
 
 ## 🔧 Usage
 ```js
-const DeepBase = require("deepbase");
+import DeepBase from "deepbase-redis"
 const mem = new DeepBase({ name: "db" }); // "db" redis prefix
 await mem.connect();
 ```
