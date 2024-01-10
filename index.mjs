@@ -117,19 +117,3 @@ export default class DeepBaseRedis {
         return [...keys, id]
     }
 }
-
-// const mem = new DeepBaseRedis();
-
-// await mem.del('a')
-
-// await mem.add('a', 'b', 'c', 1)
-// await mem.add('a', 'b', 'c', 1)
-// await mem.get('a', 'b', 'c')
-
-// await mem.set('a', 'b', 'a', 1)
-// await mem.set('a', 'c', 'a', 1)
-// await mem.del('a', 'c', 'a', 1)
-
-// console.log(await mem.get('a'))
-
-// await client.quit();
