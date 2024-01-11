@@ -57,7 +57,22 @@ class DeepBaseRedis {
 
     async get(...args) {
 
-        if (args.length == 0) return null
+        if (args.length == 0) {
+            const scan = {
+                TYPE: 'ReJSON-RL',
+                MATCH: this.name + ':*',
+                COUNT: 10000,
+            }
+
+            const dic = {}
+            for await (let key of this.client.scanIterator(scan)) {
+                console.log(key)
+                key = key.substring(this.name.length + 1)
+                dic[key] = await this.get(key);
+            }
+            
+            return dic;
+        }
 
         const key = args.shift()
         const path = args.length == 0 ? "." : args.join('.');

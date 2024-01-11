@@ -56,9 +56,11 @@ describe('DeepBaseRedis', () => {
             assert.deepEqual(await db.get('foo', 'bar'), null);
         });
 
-        it('should return null if no keys are provided', async () => {
-            assert.deepEqual(await db.get(), null);
-        });
+        it('should return the entire database if no keys are provided', async () => {
+            await db.set('foo', 'bar', 'baz');
+            await db.set('qux', 'quux', 'corge');
+            assert.deepEqual(await db.get(), { foo: { bar: 'baz' }, qux: { quux: 'corge' } });
+        });        
     });
 
     describe('#del()', () => {

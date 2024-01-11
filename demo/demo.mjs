@@ -33,10 +33,7 @@ console.log(userIds) // [ 'CqtOILTDUg', 'MXOlTBSmEf' ]
 await mem.upd("config", "lang", v => v.toUpperCase());
 const lang = await mem.get("config", "lang"); // EN
 
-console.log({
-    config: await mem.get("config"),
-    user: await mem.get("user")
-})
+console.log(await mem.get())
 
 await mem.disconnect();
 // {
