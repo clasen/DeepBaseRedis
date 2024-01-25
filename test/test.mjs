@@ -60,7 +60,7 @@ describe('DeepBaseRedis', () => {
             await db.set('foo', 'bar', 'baz');
             await db.set('qux', 'quux', 'corge');
             assert.deepEqual(await db.get(), { foo: { bar: 'baz' }, qux: { quux: 'corge' } });
-        });        
+        });
     });
 
     describe('#del()', () => {
@@ -127,6 +127,15 @@ describe('DeepBaseRedis', () => {
         });
     });
 
+    describe('#values()', () => {
+
+        it('should return values', async () => {
+            await db.set('foo', 'bar', 1);
+            await db.set('foo', 'quux', 1);
+            assert.deepEqual(await db.values('foo'), [1, 1]);
+        });
+    });
+
     describe('#upd()', async () => {
 
         it('should update field keys', async () => {
@@ -136,5 +145,5 @@ describe('DeepBaseRedis', () => {
         });
     });
 
-    
+
 });

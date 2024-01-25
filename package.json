@@ -1,6 +1,6 @@
 {
   "name": "deepbase-redis",
-  "version": "1.0.22",
+  "version": "1.1.0",
   "description": "⚡ Fastest and simplest way to add Redis Stack persistence to your projects.",
   "main": "index.js",
   "dependencies": {

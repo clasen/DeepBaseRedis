@@ -57,20 +57,12 @@ class DeepBaseRedis {
 
     async get(...args) {
 
-        if (args.length == 0) {
-            const scan = {
-                TYPE: 'ReJSON-RL',
-                MATCH: this.name + ':*',
-                COUNT: 10000,
-            }
+        if (args.length === 0) {
 
             const dic = {}
-            for await (let key of this.client.scanIterator(scan)) {
-                console.log(key)
-                key = key.substring(this.name.length + 1)
+            for (let key of await this._zeroKeys()) {
                 dic[key] = await this.get(key);
             }
-            
             return dic;
         }
 
@@ -89,6 +81,11 @@ class DeepBaseRedis {
     async keys(...args) {
         const r = await this.get(...args)
         return (r !== null && typeof r === "object") ? Object.keys(r) : [];
+    }
+
+    async values(...args) {
+        const r = await this.get(...args)
+        return (r !== null && typeof r === "object") ? Object.values(r) : [];
     }
 
     async upd(...args) {
@@ -117,7 +114,30 @@ class DeepBaseRedis {
         return this.inc(...args)
     }
 
+    async _zeroKeys() {
+        const scan = {
+            TYPE: 'ReJSON-RL',
+            MATCH: this.name + ':*',
+            COUNT: 1000,
+        }
+
+        const keys = []
+        for await (let key of this.client.scanIterator(scan)) {
+            keys.push(key.substring(this.name.length + 1));
+        }
+
+        return keys;
+    }
+
     async del(...args) {
+
+        if (args.length === 0) {
+
+            for (let key of await this._zeroKeys()) {
+                await this.del(key);
+            }
+        }
+
         const key = args.shift()
         const path = args.length == 0 ? "." : args.join('.')
         await this.client.json.del(this.name + ":" + key, path);

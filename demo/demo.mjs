@@ -4,6 +4,9 @@ const mem = new DeepBase({ name: "demo" });
 
 await mem.connect();
 
+// Reset
+await mem.del();
+
 // SET
 await mem.set("config", "lang", "en");
 
@@ -28,6 +31,10 @@ await mem.add("user", { name: "anya" });
 
 const userIds = await mem.keys("user")
 console.log(userIds) // [ 'CqtOILTDUg', 'MXOlTBSmEf' ]
+
+const userValues = await mem.values("user")
+console.log(userValues)
+// [ { name: 'martin', count: 2 }, { name: 'anya' }]
 
 // UPDATE
 await mem.upd("config", "lang", v => v.toUpperCase());
