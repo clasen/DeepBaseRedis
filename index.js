@@ -150,6 +150,15 @@ class DeepBaseRedis {
         await this.set(...[...keys, id, value])
         return [...keys, id]
     }
+
+    use(plugin) {
+        const prototype = Object.getPrototypeOf(plugin);
+        Object.getOwnPropertyNames(prototype).forEach(method => {
+            if (method !== 'constructor') {
+                this[method] = plugin[method].bind(this);
+            }
+        });
+    }
 }
 
 module.exports = DeepBaseRedis;
