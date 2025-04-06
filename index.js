@@ -1,5 +1,5 @@
-const { createClient } = require("redis");
-const { customAlphabet } = require("nanoid");
+import { createClient } from "redis";
+import { customAlphabet } from "nanoid";
 
 class DeepBaseRedis {
 
@@ -88,6 +88,11 @@ class DeepBaseRedis {
         return (r !== null && typeof r === "object") ? Object.values(r) : [];
     }
 
+    async entries(...args) {
+        const r = await this.get(...args);
+        return (r !== null && typeof r === "object") ? Object.entries(r) : [];
+    }    
+
     async upd(...args) {
         const func = args.pop();
         return this.set(...args, func(await this.get(...args)));
@@ -161,4 +166,4 @@ class DeepBaseRedis {
     }
 }
 
-module.exports = DeepBaseRedis;
+export default DeepBaseRedis;
